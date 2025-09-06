@@ -1,0 +1,158 @@
+* {
+    font-family: "Audiowide", sans-serif !important;
+}
+
+body {
+    background-color: #071124; /* Deep blue-gray for primary background */
+    color: #FFFFFF; /* White text for readability */
+    padding-top: 70px; /* Offset for fixed navbar */
+    overflow-y: hidden; /* Prevent double scrollbar */
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('images/hero-bg.jpg');
+    background-size: cover;
+    padding-top: 70px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.699); /* Adjust color and opacity as needed */
+    z-index: 1;
+}
+
+.hero > .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-weight: 600;
+}
+
+.hero p {
+    font-weight: 500;
+}
+
+#scroll-container {
+    height: 100vh; /* Subtract footer height */
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for #scroll-container */
+#scroll-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+#scroll-container::-webkit-scrollbar-thumb {
+    background: #3B82F6; /* Vibrant blue */
+    border-radius: 8px;
+}
+
+#scroll-container::-webkit-scrollbar-track {
+    background: #071124; /* Match body background */
+    border-radius: 8px;
+}
+
+/* Firefox scrollbar */
+#scroll-container {
+    scrollbar-width: thin;
+    scrollbar-color: #3B82F6 #071124;
+}
+
+.navbar {
+    background-color: #071124 !important; /* Match body background */
+    transition: background-color 0.3s;
+}
+
+.navbar.scrolled {
+    background-color: #071124 !important; /* Darker blue on scroll */ 
+}
+
+.nav-link:hover {
+    color: #60A5FA !important; /* Lighter blue on hover */
+}
+
+.card {
+    background-color: #1E2A44; /* Lighter blue-gray for cards */
+    border: none;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #3B82F6; /* Vibrant blue for buttons */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #60A5FA; /* Lighter blue on hover */
+}
+
+.progress-bar {
+    background-color: #3B82F6; /* Match button color */
+}
+
+section#about, section#skills {
+    background-color: #071124; /* Lighter blue-gray for contrast */
+    
+}
+
+section#projects, section#contact{
+    background-color: #0A192F !important; /* Match body background */
+}
+
+/* Smooth transitions */
+section {
+    transition: opacity 0.5s;
+    padding-top: 100px; /* Offset for navbar */
+    height: 100vh;
+    overflow-y: auto;
+}
+
+section#contact {
+    transition: opacity 0.5s;
+    padding-top: 100px; /* Offset for navbar */
+    height: calc(100vh - 100px); /* Subtract footer height */
+    overflow-y: auto;
+}
+
+section h2 {
+    margin-top: 60px; /* Adds space above headings */
+    font-size: 3rem;  /* Match hero heading size if desired */
+    font-weight: 600; /* Match hero font weight */
+    text-align: center;
+}
+
+/* Ensure form inputs match theme */
+.form-control {
+    background-color: #1E2A44; /* Match card background */
+    color: #FFFFFF;
+    border-color: #3B82F6;
+}
+
+.form-control::placeholder {
+    color: #A3BFFA; /* Light blue for placeholders */
+}
+
+.form-label {
+    color: #A3BFFA; /* Light blue for labels */
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Fixed height */
+    background-color: #071124 !important; /* Match lighter section background */
+    font-weight: 500;
+    color: #FFFFFF;
+    text-align: center;
+}

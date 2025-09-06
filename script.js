@@ -1,128 +1,97 @@
-// Navigation functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.getElementById("nav-toggle")
-  const navMenu = document.getElementById("nav-menu")
-  const navLinks = document.querySelectorAll(".nav-link")
+// Smooth scrolling
+document.querySelectorAll('a.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
 
-  // Mobile menu toggle
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active")
-  })
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
 
-  // Close mobile menu when clicking on a link
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("active")
-    })
-  })
+// In script.js
+window.addEventListener('load', () => {
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar.offsetHeight;
+    document.body.style.paddingTop = `${navbarHeight}px`;
+});
 
-  // Active navigation link highlighting
-  function updateActiveNavLink() {
-    const sections = document.querySelectorAll("section[id]")
-    const scrollPos = window.scrollY + 100
+// Fade-in sections on scroll
+const sections = document.querySelectorAll('section');
+const options = { threshold: 0.1 };
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.offsetHeight
-      const sectionId = section.getAttribute("id")
-      const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`)
-
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        navLinks.forEach((link) => link.classList.remove("active"))
-        if (navLink) {
-          navLink.classList.add("active")
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
         }
-      }
-    })
-  }
+    });
+}, options);
 
-  // Update active link on scroll
-  window.addEventListener("scroll", updateActiveNavLink)
+sections.forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.5s, transform 0.5s';
+    observer.observe(section);
+});
 
-  // Smooth scrolling for navigation links
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault()
-      const targetId = this.getAttribute("href").substring(1)
-      const targetSection = document.getElementById(targetId)
+// Form submission with validation and feedback
+const form = document.getElementById('contact-form');
+const feedback = document.getElementById('form-feedback');
 
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth",
-        })
-      }
-    })
-  })
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  // Contact form handling
-  const contactForm = document.getElementById("contact-form")
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault()
+    // Basic client-side validation
+    const name = form.querySelector('#name').value.trim();
+    const email = form.querySelector('#email').value.trim();
+    const message = form.querySelector('#message').value.trim();
 
-    // Get form data
-    const formData = new FormData(this)
-    const name = formData.get("name")
-    const email = formData.get("email")
-    const message = formData.get("message")
-
-    // Simple form validation
     if (!name || !email || !message) {
-      alert("Please fill in all fields.")
-      return
+        feedback.innerHTML = '<p class="text-danger">Please fill out all fields.</p>';
+        return;
     }
 
-    // Simulate form submission
-    alert("Thank you for your message! I'll get back to you soon.")
-    this.reset()
-  })
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        feedback.innerHTML = '<p class="text-danger">Please enter a valid email address.</p>';
+        return;
+    }
 
-  // Intersection Observer for animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  }
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1"
-        entry.target.style.transform = "translateY(0)"
-      }
-    })
-  }, observerOptions)
-
-  // Observe sections for animations
-  const sections = document.querySelectorAll("section")
-  sections.forEach((section) => {
-    section.style.opacity = "0"
-    section.style.transform = "translateY(20px)"
-    section.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-    observer.observe(section)
-  })
-
-  // Skill tags hover effect
-  const skillTags = document.querySelectorAll(".skill-tag")
-  skillTags.forEach((tag) => {
-    tag.addEventListener("mouseenter", function () {
-      this.style.transform = "scale(1.05)"
-    })
-
-    tag.addEventListener("mouseleave", function () {
-      this.style.transform = "scale(1)"
-    })
-  })
-
-  // Project cards hover effect
-  const projectCards = document.querySelectorAll(".project-card")
-  projectCards.forEach((card) => {
-    card.addEventListener("mouseenter", function () {
-      this.style.boxShadow = "0 10px 30px rgba(0, 188, 212, 0.2)"
-    })
-
-    card.addEventListener("mouseleave", function () {
-      this.style.boxShadow = "none"
-    })
-  })
-})
+        if (response.ok) {
+            feedback.innerHTML = '<p class="text-success">Message sent successfully!</p>';
+            form.reset(); // Clear form
+        } else {
+            feedback.innerHTML = '<p class="text-danger">Error sending message. Please try again.</p>';
+        }
+    } catch (error) {
+        feedback.innerHTML = '<p class="text-danger">Network error. Please try again later.</p>';
+    }
+});
+// Close navbar on link click (for mobile)
+document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+        var navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+            var bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
+            bsCollapse.hide();
+        }
+    });
+});
