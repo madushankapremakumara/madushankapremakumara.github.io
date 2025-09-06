@@ -41,6 +41,8 @@ body {
 
 #scroll-container {
     height: 100vh; /* Subtract footer height */
+    top: 0;
+    left: 0;
     overflow-y: auto;
 }
 
