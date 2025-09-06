@@ -152,7 +152,7 @@ section h2 {
 footer {
     position: relative;
     width: 100%;
-    height: 100px; /* Fixed height */
+    padding: 20px 0;
     background-color: #071124 !important; /* Match lighter section background */
     font-weight: 500;
     color: #FFFFFF;
