@@ -1,2 +1,5 @@
-#ignore old files backup
 .old/
+.next/
+node_modules/
+.vscode/
+*.log
