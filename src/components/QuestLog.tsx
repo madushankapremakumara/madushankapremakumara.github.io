@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Grid, Card, CardContent, Button, Chip } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import HUDPanel from './HUDPanel';
@@ -181,6 +181,11 @@ const QuestCard: React.FC<{ quest: Quest }> = ({ quest }) => {
 
 const QuestLog: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const quests: Quest[] = [
     { 
@@ -225,7 +230,7 @@ const QuestLog: React.FC = () => {
   return (
     <HUDPanel title="QUEST LOG — PROJECTS" fullWidth accentColor="cyan" sx={{ mb: 4 }}>
       <Grid container spacing={2.5}>
-        {displayedQuests.map((quest, idx) => (
+        {isClient && displayedQuests.map((quest, idx) => ( // 👈 Add isClient check
           <Grid size={{ xs: 12, md: showAll ? 4 : 6 }} key={idx}>
             <QuestCard quest={quest} />
           </Grid>
@@ -236,7 +241,7 @@ const QuestLog: React.FC = () => {
           variant="outlined"
           size="medium"
           endIcon={<ChevronRight />}
-          onClick={() => setShowAll(!showAll)}
+          onClick={() => setShowAll(prev => !prev)} // 👈 Use functional update
           sx={{ 
             borderColor: 'rgba(139, 92, 246, 0.3)', 
             color: '#a78bfa', 

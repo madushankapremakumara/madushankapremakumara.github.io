@@ -62,7 +62,7 @@ const HUDPanel: React.FC<HUDPanelProps> = ({
             background: 'rgba(8, 4, 40, 0.95)',
             px: 2,
             py: 0.3,
-            fontSize: '0.6rem',
+            fontSize: '0.75rem',
             fontWeight: 700,
             letterSpacing: '0.2em',
             color: c.primary,

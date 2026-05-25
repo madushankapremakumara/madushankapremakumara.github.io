@@ -121,8 +121,30 @@ const HeaderHUD: React.FC<HeaderHUDProps> = ({ mobileOpen, onDrawerToggle }) => 
         <List sx={{ p: 2 }}>
           {navItems.map((item) => (
             <ListItem key={item} disablePadding sx={{ mb: 0.5 }}>
-              <ListItemButton component="a" href={`#${item.toLowerCase()}`} onClick={onDrawerToggle} sx={{ borderRadius: 2, color: '#94a3b8', borderLeft: '3px solid transparent', '&:hover': { color: '#06b6d4', background: 'rgba(6, 182, 212, 0.08)', borderLeftColor: '#06b6d4' } }}>
-                <ListItemText primary={item} primaryTypographyProps={{ sx: { fontWeight: 600, fontSize: '0.95rem' } }} />
+              <ListItemButton
+                component="a"
+                href={`#${item.toLowerCase()}`}
+                onClick={onDrawerToggle}
+                sx={{
+                  borderRadius: 2,
+                  color: '#94a3b8',
+                  borderLeft: '3px solid transparent',
+                  '&:hover': {
+                    color: '#06b6d4',
+                    background: 'rgba(6, 182, 212, 0.08)',
+                    borderLeftColor: '#06b6d4',
+                  },
+                }}
+              >
+                <ListItemText 
+                  primary={item}
+                  sx={{ 
+                    '& .MuiListItemText-primary': {
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                    }
+                  }}
+                />
               </ListItemButton>
             </ListItem>
           ))}

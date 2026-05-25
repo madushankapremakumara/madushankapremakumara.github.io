@@ -21,9 +21,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Madushanka Premakumara | Portfolio",
+  title: "Madushanka | Portfolio",
   description: "Creative Full-Stack Developer & Software Engineer crafting ultra-premium web experiences using React, Next.js, and Laravel.",
-  keywords: ["Madushanka Premakumara", "Portfolio", "Full-Stack Developer", "Next.js", "React", "Laravel", "PHP", "Material UI"],
+  keywords: ["Madushanka Premakumara", "Portfolio", "Full-Stack Developer", "Next.js", "React", "Laravel", "PHP", "Material UI", "django", "Python"],
   authors: [{ name: "Madushanka Premakumara" }],
 };
 
