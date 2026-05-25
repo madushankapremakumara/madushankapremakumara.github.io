@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Typography, Grid, Card, CardContent, Button, Chip } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import HUDPanel from './HUDPanel';
@@ -178,8 +178,6 @@ const QuestCard: React.FC<{ quest: Quest }> = ({ quest }) => {
 };
 
 const QuestLog: React.FC = () => {
-  const [showAll, setShowAll] = useState(false);
-
   const quests: Quest[] = [
     { 
       title: 'Library Management System', 
@@ -218,39 +216,15 @@ const QuestLog: React.FC = () => {
     },
   ];
 
-  const displayedQuests = showAll ? quests : quests.slice(0, 2);
-
   return (
     <HUDPanel title="QUEST LOG — PROJECTS" fullWidth accentColor="cyan" sx={{ mb: 4 }}>
       <Grid container spacing={2.5}>
-        {displayedQuests.map((quest, idx) => (
-          <Grid size={{ xs: 12, md: showAll ? 4 : 6 }} key={idx}>
+        {quests.map((quest, idx) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
             <QuestCard quest={quest} />
           </Grid>
         ))}
       </Grid>
-      <Box sx={{ textAlign: 'center', mt: 3 }}>
-        <Button
-          variant="outlined"
-          size="medium"
-          endIcon={<ChevronRight />}
-          onClick={() => setShowAll(prev => !prev)}
-          sx={{ 
-            borderColor: 'rgba(139, 92, 246, 0.3)', 
-            color: '#a78bfa', 
-            fontSize: '0.95rem', 
-            px: 4, 
-            py: 0.8, 
-            borderRadius: 2.5, 
-            '&:hover': { 
-              borderColor: '#8b5cf6', 
-              background: 'rgba(139, 92, 246, 0.1)' 
-            } 
-          }}
-        >
-          {showAll ? 'COLLAPSE QUESTS' : 'VIEW ALL QUESTS'}
-        </Button>
-      </Box>
     </HUDPanel>
   );
 };
