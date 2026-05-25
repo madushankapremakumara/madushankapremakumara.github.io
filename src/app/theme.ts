@@ -25,6 +25,21 @@ const theme = createTheme({
       secondary: '#94a3b8',
     },
     divider: 'rgba(139, 92, 246, 0.15)',
+    info: {
+      main: '#06b6d4',    // Cyan for tech data
+      light: '#22d3ee',
+      dark: '#0891b2',
+    },
+    warning: {
+      main: '#f97316',    // Orange for difficulty/alerts
+      light: '#fb923c',
+      dark: '#ea580c',
+    },
+    success: {
+      main: '#10b981',    // Emerald for completed/XP
+      light: '#34d399',
+      dark: '#059669',
+    },
   },
   typography: {
     fontFamily: 'var(--font-outfit), var(--font-inter), sans-serif',
@@ -60,6 +75,11 @@ const theme = createTheme({
       textTransform: 'none',
       fontWeight: 600,
       letterSpacing: '0.02em',
+    },
+    caption: {
+      fontFamily: 'Courier New, monospace',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
     },
   },
   components: {
@@ -113,6 +133,48 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: '4px',
+          fontWeight: 600,
+          fontSize: '0.75rem',
+          transition: 'all 0.25s ease',
+          border: '1px solid rgba(6, 182, 212, 0.3)',
+          backgroundColor: 'rgba(6, 182, 212, 0.08)',
+          color: '#22d3ee',
+          '&:hover': {
+            backgroundColor: 'rgba(6, 182, 212, 0.15)',
+            borderColor: '#06b6d4',
+          },
+        },
+      },
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: {
+          height: 8,
+          borderRadius: 2,
+          backgroundColor: 'rgba(255,255,255,0.08)',
+          overflow: 'visible',
+        },
+        bar: {
+          borderRadius: 2,
+          background: 'linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%)',
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: '4px',
+            height: '100%',
+            background: 'rgba(255,255,255,0.6)',
+            boxShadow: '0 0 10px rgba(255,255,255,0.8)',
+          },
         },
       },
     },
