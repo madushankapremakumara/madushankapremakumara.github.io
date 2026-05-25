@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Grid, Card, CardContent, Button, Chip } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import HUDPanel from './HUDPanel';
@@ -14,7 +14,6 @@ interface Quest {
 }
 
 const QuestCard: React.FC<{ quest: Quest }> = ({ quest }) => {
-  // Difficulty configuration with colors and icons
   const diffConfig: Record<string, { 
     badgeColor: string; 
     titleColor: string; 
@@ -76,7 +75,6 @@ const QuestCard: React.FC<{ quest: Quest }> = ({ quest }) => {
         boxShadow: `0 8px 30px ${cfg.glowColor}` 
       } 
     }}>
-      {/* Difficulty Badge */}
       <Box sx={{ 
         position: 'absolute', 
         top: -8, 
@@ -181,11 +179,6 @@ const QuestCard: React.FC<{ quest: Quest }> = ({ quest }) => {
 
 const QuestLog: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const quests: Quest[] = [
     { 
@@ -230,7 +223,7 @@ const QuestLog: React.FC = () => {
   return (
     <HUDPanel title="QUEST LOG — PROJECTS" fullWidth accentColor="cyan" sx={{ mb: 4 }}>
       <Grid container spacing={2.5}>
-        {isClient && displayedQuests.map((quest, idx) => ( // 👈 Add isClient check
+        {displayedQuests.map((quest, idx) => (
           <Grid size={{ xs: 12, md: showAll ? 4 : 6 }} key={idx}>
             <QuestCard quest={quest} />
           </Grid>
@@ -241,7 +234,7 @@ const QuestLog: React.FC = () => {
           variant="outlined"
           size="medium"
           endIcon={<ChevronRight />}
-          onClick={() => setShowAll(prev => !prev)} // 👈 Use functional update
+          onClick={() => setShowAll(prev => !prev)}
           sx={{ 
             borderColor: 'rgba(139, 92, 246, 0.3)', 
             color: '#a78bfa', 
