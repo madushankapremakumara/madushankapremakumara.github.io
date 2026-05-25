@@ -35,7 +35,7 @@ const CommsTerminal: React.FC = () => {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-      <Box sx={{ width: { xs: '100%', md: '750px' } }}>
+      <Box sx={{ width: { xs: '100%' } }}>
         <HUDPanel title="COMMS TERMINAL" fullWidth accentColor="cyan">
           <Box sx={{ textAlign: 'center', mb: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 800, mb: 0.5, fontFamily: 'var(--font-outfit)', color: '#06b6d4', fontSize: { xs: '1.7rem', md: '2.2rem' } }}>INITIATE CONTACT</Typography>
