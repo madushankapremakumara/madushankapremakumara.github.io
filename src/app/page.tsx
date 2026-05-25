@@ -31,10 +31,10 @@ export default function Home() {
           {/* Section A: Character + Stats */}
           <Box id="about" sx={{ mb: 5 }}>
             <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 5 }}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <CharacterInfo />
               </Grid>
-              <Grid size={{ xs: 12, md: 7 }}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TacticalStats />
               </Grid>
             </Grid>

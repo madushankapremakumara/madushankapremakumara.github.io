@@ -23,20 +23,20 @@ const CharacterInfo: React.FC = () => (
       </Box>
 
       <Box sx={{ flex: 1, pt: 1 }}>
-        <Typography variant="h5" sx={{ fontWeight: 800, fontFamily: 'var(--font-outfit)', fontSize: { xs: '1.1rem', md: '1.4rem' }, mb: 0.5, letterSpacing: '0.02em' }}>
+        <Typography variant="h5" sx={{ fontWeight: 800, fontFamily: 'var(--font-outfit)', fontSize: { xs: '1.3rem', md: '1.7rem' }, mb: 0.5, letterSpacing: '0.02em' }}>
           Madushanka Premakumara
         </Typography>
-        <Typography variant="body1" sx={{ color: '#06b6d4', fontWeight: 700, fontSize: '0.95rem', mb: 1, letterSpacing: '0.05em' }}>
+        <Typography variant="body1" sx={{ color: '#06b6d4', fontWeight: 700, fontSize: '1.15rem', mb: 1, letterSpacing: '0.05em' }}>
           Software Developer
         </Typography>
         
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-          <Typography variant="caption" sx={{ color: '#94a3b8', fontFamily: 'Courier New, monospace', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Typography variant="caption" sx={{ color: '#94a3b8', fontFamily: 'Courier New, monospace', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: 0.5 }}>
             <Box component="span" sx={{ color: '#06b6d4' }}>▶</Box> Saegis Campus
           </Typography>
           <Box sx={{ display: 'flex', gap: 1 }}>
-            <Chip label="UNDERGRADUATE" size="small" sx={{ bgcolor: 'rgba(139, 92, 246, 0.15)', color: '#a78bfa', border: '1px solid rgba(139, 92, 246, 0.3)', fontWeight: 700, fontSize: '0.65rem', height: 24 }} />
-            <Chip label="FULL-STACK" size="small" sx={{ bgcolor: 'rgba(6, 182, 212, 0.15)', color: '#67e8f9', border: '1px solid rgba(6, 182, 212, 0.3)', fontWeight: 700, fontSize: '0.65rem', height: 24 }} />
+            <Chip label="UNDERGRADUATE" size="small" sx={{ bgcolor: 'rgba(139, 92, 246, 0.15)', color: '#a78bfa', border: '1px solid rgba(139, 92, 246, 0.3)', fontWeight: 700, fontSize: '0.8rem', height: 24 }} />
+            <Chip label="FULL-STACK" size="small" sx={{ bgcolor: 'rgba(6, 182, 212, 0.15)', color: '#67e8f9', border: '1px solid rgba(6, 182, 212, 0.3)', fontWeight: 700, fontSize: '0.8rem', height: 24 }} />
           </Box>
         </Box>
       </Box>
@@ -53,10 +53,10 @@ const CharacterInfo: React.FC = () => (
       flexDirection: 'column',
       justifyContent: 'center'
     }}>
-      <Typography variant="caption" sx={{ color: '#06b6d4', fontWeight: 700, display: 'block', mb: 1.5, fontSize: '0.7rem', letterSpacing: '0.1em' }}>
+      <Typography variant="caption" sx={{ color: '#06b6d4', fontWeight: 700, display: 'block', mb: 1.5, fontSize: '0.85rem', letterSpacing: '0.1em' }}>
         ▶ PERSONAL LOG ENTRY
       </Typography>
-      <Typography variant="body1" sx={{ color: '#cbd5e1', lineHeight: 1.7, fontSize: '0.9rem' }}>
+      <Typography variant="body1" sx={{ color: '#cbd5e1', lineHeight: 1.7, fontSize: '1.1rem' }}>
         "Spirited Software Engineering undergraduate blending creativity with code. A natural collaborator with a relentless drive to learn. I don't just write code; I architect experiences."
       </Typography>
     </Box>

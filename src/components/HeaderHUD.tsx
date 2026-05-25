@@ -31,26 +31,15 @@ const HeaderHUD: React.FC<HeaderHUDProps> = ({ mobileOpen, onDrawerToggle }) => 
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ justifyContent: 'space-between', minHeight: 48 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#10b981', animation: 'pulse 2s infinite' }} />
-                <Typography variant="caption" sx={{ color: '#10b981', fontWeight: 700, fontFamily: 'Courier New, monospace', fontSize: '0.65rem' }}>
-                  SYSTEM ONLINE
-                </Typography>
-              </Box>
-              <Typography variant="caption" sx={{ color: '#64748b', fontFamily: 'Courier New, monospace', fontSize: '0.65rem' }}>
-                v2.5.0
-              </Typography>
-            </Box>
-
-            <Box sx={{ textAlign: 'center' }}>
+            {/* Left Side: Name & Status */}
+            <Box sx={{ textAlign: 'left' }}>
               <Typography
                 variant="h6"
                 sx={{
                   fontWeight: 800,
-                  letterSpacing: '0.2em',
+                  letterSpacing: '0.15em',
                   fontFamily: 'var(--font-outfit)',
-                  fontSize: { xs: '0.8rem', md: '1rem' },
+                  fontSize: { xs: '1rem', md: '1.4rem' },
                   background: 'linear-gradient(135deg, #f8fafc 30%, #8b5cf6 90%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -63,15 +52,33 @@ const HeaderHUD: React.FC<HeaderHUDProps> = ({ mobileOpen, onDrawerToggle }) => 
                 sx={{
                   color: '#06b6d4',
                   fontWeight: 700,
-                  letterSpacing: '0.25em',
+                  letterSpacing: '0.2em',
                   fontFamily: 'Courier New, monospace',
-                  fontSize: '0.6rem',
+                  fontSize: '0.9rem',
+                  display: 'block',
+                  mt: -0.3,
                 }}
               >
                 [ LEVEL 03 | UNDERGRADUATE ]
               </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: '#10b981',
+                  fontFamily: 'Courier New, monospace',
+                  fontSize: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.5,
+                  mt: 0.3,
+                }}
+              >
+                <Box sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: '#10b981', animation: 'pulse 2s infinite' }} />
+                SYSTEM ONLINE
+              </Typography>
             </Box>
 
+            {/* Right Side: Navigation */}
             {!isMobile ? (
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {navItems.map((item) => (
@@ -83,7 +90,7 @@ const HeaderHUD: React.FC<HeaderHUDProps> = ({ mobileOpen, onDrawerToggle }) => 
                     sx={{
                       color: '#94a3b8',
                       fontWeight: 600,
-                      fontSize: '0.7rem',
+                      fontSize: '0.85rem',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
                       px: 2,

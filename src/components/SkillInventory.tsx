@@ -13,8 +13,8 @@ const SkillChip: React.FC<{ skill: Skill }> = ({ skill }) => (
   <Tooltip
     title={
       <Box sx={{ py: 0.5 }}>
-        <Typography sx={{ fontWeight: 700, color: '#06b6d4', fontSize: '0.9rem', mb: 0.5 }}>{skill.name}</Typography>
-        <Typography sx={{ color: '#94a3b8', fontSize: '0.8rem', lineHeight: 1.4 }}>{skill.tooltip}</Typography>
+        <Typography sx={{ fontWeight: 700, color: '#06b6d4', fontSize: '1.1rem', mb: 0.5 }}>{skill.name}</Typography>
+        <Typography sx={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.4 }}>{skill.tooltip}</Typography>
       </Box>
     }
     arrow
@@ -57,7 +57,7 @@ const SkillChip: React.FC<{ skill: Skill }> = ({ skill }) => (
         },
       }}
     >
-      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#e2e8f0', fontSize: { xs: '0.75rem', sm: '0.85rem' } }}>
+      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#e2e8f0', fontSize: { xs: '0.9rem', sm: '1rem' } }}>
         {skill.name}
       </Typography>
     </Box>
@@ -83,7 +83,7 @@ const SkillInventory: React.FC = () => {
           <SkillChip key={skill.name} skill={skill} />
         ))}
       </Box>
-      <Typography variant="caption" sx={{ color: '#475569', textAlign: 'center', display: 'block', mt: 2.5, fontFamily: 'Courier New, monospace', fontSize: '0.75rem' }}>
+      <Typography variant="caption" sx={{ color: '#475569', textAlign: 'center', display: 'block', mt: 2.5, fontFamily: 'Courier New, monospace', fontSize: '0.9rem' }}>
         ▶ HOVER ITEM FOR TACTICAL TOOLTIP
       </Typography>
     </HUDPanel>
